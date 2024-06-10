@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:web_view_2024/utils/custom_drawer.dart';
 import 'package:web_view_2024/utils/utils.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
@@ -28,7 +29,32 @@ class _WebViewDemoState extends State<WebViewDemo> {
           onPageStarted: (url) {},
           onPageFinished: (url) {},
           onHttpError: (HttpResponseError error) {},
-          onWebResourceError: (WebResourceError error) {},
+          onWebResourceError: (WebResourceError error) {
+            Get.dialog(
+              AlertDialog(
+                title: Text('Page Resource Error'),
+                content: SingleChildScrollView(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text('Code: ${error.errorCode}'),
+                      Text('Description: ${error.description}'),
+                      Text('Error Type: ${error.errorType}'),
+                      Text('Is For Main Frame: ${error.isForMainFrame}'),
+                    ],
+                  ),
+                ),
+                actions: [
+                  TextButton(
+                    onPressed: () {
+                      Get.back(); // Close the dialog
+                    },
+                    child: Text('Close'),
+                  ),
+                ],
+              ),
+            );
+          },
           onNavigationRequest: (NavigationRequest request) {
             if (request.url.startsWith('https://www.google.com/')) {
               return NavigationDecision.prevent;
@@ -44,32 +70,7 @@ class _WebViewDemoState extends State<WebViewDemo> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        drawer: Drawer(
-          backgroundColor: Colors.black87,
-          child: ListView(padding: EdgeInsets.zero, children: <Widget>[
-            Container(
-              height: 60.h,
-              child: DrawerHeader(
-                decoration: const BoxDecoration(
-                  color: Colors.black,
-                ),
-                child: Center(
-                  child: Text(
-                    'Drawer Example',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 18.sp,
-                    ),
-                  ),
-                ),
-              ),
-            ),
-            customDrawerBtn(name: "Login", onTapFunction: () {}),
-            customDrawerBtn(name: "Register", onTapFunction: () {}),
-            customDrawerBtn(name: "Support", onTapFunction: () {}),
-            customDrawerBtn(name: "Contact Us", onTapFunction: () {}),
-          ]),
-        ),
+        drawer: const CustomDrawer(),
         appBar: AppBar(
           centerTitle: true,
           backgroundColor: Colors.grey.shade200,
