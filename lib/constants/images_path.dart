@@ -5,7 +5,7 @@ class ImagesPath {
   static const imagessPath = "assets/images";
 
   //Images
-  static const logo = "$imagessPath/logo.jpg";
+  static const logo = "$imagessPath/logo.PNG";
 
   static const avatarPic =
       "https://img.freepik.com/free-psd/3d-illustration-person-with-sunglasses_23-2149436188.jpg?size=338&ext=jpg&ga=GA1.1.1395880969.1709337600&semt=ais";
