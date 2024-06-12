@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_background_service/flutter_background_service.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:web_view_2024/view/screens/splashscreen/splash_screen.dart';
-import 'package:web_view_2024/data/webview_demo.dart';
+import 'package:web_view_2024/view/screens/webview_demo.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+  final service = FlutterBackgroundService();
   runApp(const MyApp());
 }
 

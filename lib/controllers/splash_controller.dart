@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:get/get.dart';
 
-import '../data/webview_demo.dart';
+import '../view/screens/webview_demo.dart';
 
 class SplashScreenController extends GetxController {
   @override
