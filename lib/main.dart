@@ -8,9 +8,15 @@ import 'package:web_view_2024/view/screens/webview_demo.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
-  final service = FlutterBackgroundService();
+// await initializeService();
   runApp(const MyApp());
 }
+
+// Future<void> initializeService() async {
+//   final service = FlutterBackgroundService();
+
+
+// }
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
